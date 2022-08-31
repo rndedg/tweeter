@@ -11,6 +11,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Source+Sans+Pro:ital,wght@0,300;0,600;1,300;1,600&display=swap" rel="stylesheet">
 
     <!-- App CSS -->
+    <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/all-tweets.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
     <link rel="stylesheet" href="/styles/nav.css" type="text/css" /> 
     <link rel="stylesheet" href="/styles/header.css" type="text/css" /> 
@@ -20,6 +22,8 @@
 
     <!-- App JS -->
     <script type="text/javascript" src="/scripts/client.js"></script>
+  </head>
+    <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
   </head>
 
   <body>
@@ -32,7 +36,7 @@
       
     </nav>
 
-  <header>
+  <header class="main-header">
       <div>
           <img src="/images/profile-hex.png"> 
       </div>
@@ -44,11 +48,42 @@
 
     <!-- Page-specific (main) content here -->
     <main class="container">
-      <h1>LOREM IPSUM</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
 
-      <h1>LOREM IPSUM</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+
+      <section class="new-tweet">
+        <h2>Compose Tweet</h2>
+        <form class="submit-tweet" action="/tweets/" method="POST">
+          <label for="tweet-text">What are you humming about?</label>
+          <textarea name="text" id="tweet-text"></textarea>
+          <div class ="new-tweet-footer">
+            <button id="submit-button" type="submit">Tweet</button>
+            <output name="counter" class="counter" for="tweet-text">140</output>
+          </div>
+        </form>
+      </section>
+
+      <section class="all-tweets">
+        <article>
+          <header>
+            <div id="user-name">
+              <img src="https://i.imgur.com/nlhLi3I.png" alt="">
+              <p> Jen</p>
+            </div>
+            
+            <p id="user-handle">@jenLHL</p>
+          </header>
+          
+          <p>I am writing a tweet. This is just a test...</p>
+          <footer>
+            <p>10 days ago</p>
+            <div class="footer-icons">
+              <i class="fa-solid fa-flag"></i>
+              <i class="fa-solid fa-retweet"></i>
+              <i class="fa-solid fa-heart"></i> 
+            </div>
+          </footer>
+        </article>
+      </section>
     </main>
   </body>
 </html>

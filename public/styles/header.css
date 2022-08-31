@@ -1,17 +1,16 @@
-header {
+.main-header {
   height: 520px;
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: orange;
   color: white;
-  background-color: #e58800;
+  background-color: #c57501;
   background-image: url("https://www.transparenttextures.com/patterns/concrete-wall-3.png");
   padding-top: 120px;
 }
 
-header h2 {
+.main-header h2 {
   font-weight: normal;
 }

@@ -1,0 +1,72 @@
+.container {
+  background-color: #e3ddd3;
+  border-radius: 10px;
+  padding-bottom: 30px;
+}
+
+.all-tweets header {
+  color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.all-tweets {
+  border: solid black;
+  padding-left: 1em;
+  padding-right: 1em;
+  margin-top: 1em;
+  transition: box-shadow .2s
+}
+
+.all-tweets footer {
+  border-top: solid black;
+  font-size: medium;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.all-tweets p {
+  font-weight: 600;
+  font-size: large;
+  
+}
+
+.all-tweets footer p {
+  font-size: small;
+}
+
+.footer-icons {
+  display: flex;
+  justify-content: space-around;
+  width: 80px;
+}
+
+.all-tweets img {
+  width: 2em;
+}
+
+#user-name {
+  font-size: large;
+  font-weight: normal;
+  display: flex;
+  align-items: center;
+  width: 80px;
+  justify-content: space-between;
+}
+
+#user-handle {
+  font-size: large;
+  opacity: 0.4;
+  color: #4056A1;
+}
+
+
+.all-tweets:hover {
+  box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.3);
+}
+
+.fa-flag:hover, .fa-heart:hover, .fa-retweet:hover {
+  color: rgb(43, 138, 201);
+}
