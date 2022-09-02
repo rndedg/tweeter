@@ -1,6 +1,4 @@
 $(document).ready(function() {
-  console.log("Ready");
-  
   $('#tweet-text').keyup(function() {
     let charCount = $(this).val().length;
     let counter = $(this).parent().children('.new-tweet-footer').children('.counter');
