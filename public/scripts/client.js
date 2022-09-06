@@ -28,10 +28,18 @@ const data = [
 $(document).ready(()=> {
 
 
+  // // Implement escape function to prevent XSS issues
+  const escape = (str) => {
+    let div = document.createElement("div");
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  };
+
+  // Builds the tweet template and fills in the fields using the database
 
   const createTweetElement = (tweet) => {
     let $tweet = `
-    <article>
+    <article class="new-tweet">
             <header>
               <div id="user-name">
                 <img src="${tweet.user.avatars}" alt="profile picture"/>
@@ -41,9 +49,9 @@ $(document).ready(()=> {
               <p id="user-handle">${tweet.user.handle}</p>
             </header>
             
-            <p>${tweet.content.text}</p>
+            <p>${escape(tweet.content.text)}</p>
             <footer>
-              <p>${tweet.created_at}</p>
+              <p>${timeago.format(tweet.created_at)}</p>
               <div class="footer-icons">
                 <i class="fa-solid fa-flag"></i>
                 <i class="fa-solid fa-retweet"></i>
@@ -56,6 +64,7 @@ $(document).ready(()=> {
     return $tweet;
   };
 
+  // Renders tweet list, populating it by looping through the database
   const renderTweets = function(tweets) {
     const allTweets = $(".all-tweets");
     $.each(tweets, (post) => {
@@ -66,5 +75,44 @@ $(document).ready(()=> {
 
   };
 
-  renderTweets(data);
+
+  //Setting Listeners for form submission
+  $(".submit-tweet").submit(function(event) {
+    event.preventDefault();
+    
+    let tweetInner = event.target[0].value;
+
+    if (!tweetInner) {
+      $(".error").text("Tweet empty, please share your thoughts!");
+      $(".error").slideDown("slow").delay(2500).slideUp("slow");
+    }
+
+    if (tweetInner.length > 140) {
+      $(".error").text("Tweet is too long. Max characters is 140.");
+      $(".error").slideDown("slow").delay(2500).slideUp("slow");
+    }
+
+
+    $.ajax({
+      method: "POST",
+      url: "/tweets/",
+      data: $("#tweet-text").serialize(),
+    }).then(function() {
+      loadTweets();
+    });
+  });
+
+
+  // Implement loadTweets function.
+  // Use AJAX to fetch the tweets from the database
+
+  const loadTweets = () => {
+    $.ajax({
+      method: "GET",
+      url: "/tweets"
+    }).then(function(tweet) {
+      renderTweets(tweet);
+    });
+  };
+  loadTweets();
 });

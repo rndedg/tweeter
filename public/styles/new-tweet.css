@@ -10,6 +10,7 @@
   font-family: 'Bungee', cursive;
   font-size: medium;
   padding: 4px 6px 4px 6px;
+  margin-bottom: 2px;
 }
 
 .new-tweet h2 {
@@ -31,6 +32,7 @@
   display: flex;
   justify-content: space-between;
   margin-top: .5em;
+  align-items: center;
 }
 
 label {
@@ -46,4 +48,17 @@ label {
 
 .warning {
   color: red;
+}
+
+.error {
+  display: flex;
+  justify-content: center;  
+  width: fit-content;
+  color: red;
+  border: 2px solid red;
+  border-radius: 10px;
+  padding: 5px;
+  background-color: white;
+  font-size: x-large;
+  display: none;
 }
