@@ -34,6 +34,7 @@ $(document).ready(()=> {
     div.appendChild(document.createTextNode(str));
     return div.innerHTML;
   };
+  
 
   // Builds the tweet template and fills in the fields using the database
 
@@ -66,13 +67,11 @@ $(document).ready(()=> {
 
   // Renders tweet list, populating it by looping through the database
   const renderTweets = function(tweets) {
-    const allTweets = $(".all-tweets");
+    const $allTweets = $(".all-tweets");
+    $allTweets.empty();
     $.each(tweets, (post) => {
-      allTweets.append(createTweetElement(tweets[post]));
+      $allTweets.prepend(createTweetElement(tweets[post]));
     });
-
-    return allTweets;
-
   };
 
 
@@ -85,20 +84,23 @@ $(document).ready(()=> {
     if (!tweetInner) {
       $(".error").text("Tweet empty, please share your thoughts!");
       $(".error").slideDown("slow").delay(2500).slideUp("slow");
+      return;
     }
 
     if (tweetInner.length > 140) {
       $(".error").text("Tweet is too long. Max characters is 140.");
       $(".error").slideDown("slow").delay(2500).slideUp("slow");
+      return;
     }
 
 
     $.ajax({
       method: "POST",
       url: "/tweets/",
-      data: $("#tweet-text").serialize(),
+      data: $(this).serialize(),
     }).then(function() {
       loadTweets();
+      document.querySelector(".submit-tweet").reset();
     });
   });
 
@@ -115,4 +117,5 @@ $(document).ready(()=> {
     });
   };
   loadTweets();
+
 });

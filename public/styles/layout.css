@@ -14,12 +14,33 @@ html {
  * Global layout stuff
  */
 
-body {
+/* body {
   color: #545149;
   background-color: #f4f1ec;
   font-size: 24px;
   font-family: 'Source Sans Pro', sans-serif;
 
+} */
+body {
+  color: #545149;
+  background-color: #f4f1ec;
+  font-size: 24px;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 400;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+}
+
+main {
+  display: flex;
+  width: 100%;
+  background-color: #f4f1ec;
+  flex-direction: column;
+  font-family: sans-serif;
+  align-items: center;
+  padding-top: 20px;
 }
 
 /*
@@ -30,9 +51,43 @@ body {
   font-family: 'Bungee', cursive;
  }
 
- main {
-  padding-left: 5%;
-  padding-right: 5%;
-  justify-content: center;
-  background-color: #f4f1ec;
+ @media only screen and (max-width: 1023px) {
+  nav {
+    background-color: #000a81;
+    background-image: url("https://www.transparenttextures.com/patterns/concrete-wall-3.png");
+  }
  }
+
+ @media only screen and (min-width: 1024px) {
+  body {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  
+  main {
+    width: 200%;
+    background-color: #f4f1ec;
+    margin-top: 120px;
+    margin-right: 50px;
+    margin-left: 30px;
+  }
+  
+  .main-header {
+    border-radius: 0 0 20px 0;
+    padding-top: 150px;
+  }
+
+  nav {
+    position: fixed;
+    background-color: #040866;
+    color: #FFFFFF;
+    height: 120px;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    font-size: larger;
+  }
+}

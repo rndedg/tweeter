@@ -1,6 +1,6 @@
 .new-tweet {
-  background-color: #e3ddd3;
-  border-radius: 10px;
+  background-color: #2e658d33;
+  border-radius: 5px;
   margin-bottom: 2em;
 }
 
@@ -59,6 +59,6 @@ label {
   border-radius: 10px;
   padding: 5px;
   background-color: white;
-  font-size: x-large;
+  font-size: large;
   display: none;
 }
