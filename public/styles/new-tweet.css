@@ -62,3 +62,7 @@ label {
   font-size: large;
   display: none;
 }
+
+.tweet-form {
+  display: none;
+}

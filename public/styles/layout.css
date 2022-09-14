@@ -91,3 +91,16 @@ main {
     font-size: larger;
   }
 }
+
+#home-btn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  padding: 15px;
+  scale: 1.5;
+  color: red;
+  background-color: #080c6ab8;
+  border-radius: 15px;
+}

@@ -118,4 +118,26 @@ $(document).ready(()=> {
   };
   loadTweets();
 
+
+  // Implement onclick to show/hide the form when clicking the nav arrows
+  $(".nav-arrows").on("click", function () {
+    $(".tweet-form").slideToggle("slow", function() {
+    });
+    $("tweet-form").focus();
+  });
+
+
+  let homeBtn = document.getElementById("home-btn");
+  window.onscroll = function () {
+    if (document.body.scrollTop > 150 || document.documentElement.scrollTop > 150) {
+      homeBtn.style.display = "block";
+    } else {
+      homeBtn.style.display = "none";
+    }
+  };
+  
+  $('#home-btn').on('click', function () {
+    document.documentElement.scrollTop = 0;
+  });
+  
 });

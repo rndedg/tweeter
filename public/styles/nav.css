@@ -28,3 +28,7 @@ span {
   display: flex !important;
   justify-content: center;
 }
+.nav-arrows:hover {
+  transform: scale(1.5) perspective(1px);
+  color: magenta;
+}
