@@ -1,3 +1,5 @@
+@import '_variables';
+
 nav {
   color: #FFFFFF;
   height: 120px;
@@ -13,7 +15,7 @@ nav {
 span {
   font-size: xx-large;
   padding-top: 1.5em;
-}
+} 
 
 .nav-right {
   display: flex;
@@ -21,12 +23,12 @@ span {
   font-size: smaller;
 }
 
+
 .nav-arrows {
-  color: red;
+  color: $iconColor;
   display: flex !important;
   justify-content: center;
 }
-
 .nav-arrows:hover {
   transform: scale(1.5) perspective(1px);
   color: magenta;

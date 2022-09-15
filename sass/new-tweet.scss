@@ -1,20 +1,24 @@
+@import '_variables';
+
 .new-tweet {
-  background-color: rgba(46, 101, 141, 0.2);
+  background-color: #2e658d33;
   border-radius: 5px;
   margin-bottom: 2em;
-}
-.new-tweet h2 {
-  margin: 10px 10px 10px 0px;
+
+  h2 {
+    margin: 10px 10px 10px 0px;
+  }
 }
 
-#submit-button {
+ #submit-button {
   color: white;
   background-color: #4056A1;
-  font-family: "Bungee", cursive;
+  font-family: 'Bungee', cursive;
   font-size: medium;
   padding: 4px 6px 4px 6px;
   margin-bottom: 2px;
 }
+
 
 #tweet-text {
   background: none;
@@ -23,14 +27,14 @@
   resize: none;
   font-family: inherit;
   font-size: large;
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid $primary;
   width: 100%;
 }
 
 .new-tweet-footer {
   display: flex;
   justify-content: space-between;
-  margin-top: 0.5em;
+  margin-top: .5em;
   align-items: center;
 }
 
@@ -41,20 +45,20 @@ label {
 }
 
 .counter {
-  font-family: "Bungee", cursive;
+  font-family: 'Bungee', cursive;
   font-size: large;
 }
 
 .warning {
-  color: red;
+  color: $iconColor;
 }
 
 .error {
   display: flex;
-  justify-content: center;
+  justify-content: center;  
   width: fit-content;
-  color: red;
-  border: 2px solid red;
+  color: $iconColor;
+  border: 2px solid $iconColor;
   border-radius: 10px;
   padding: 5px;
   background-color: white;

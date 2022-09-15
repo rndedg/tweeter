@@ -1,31 +1,4 @@
-const data = [
-  {
-    "user": {
-      "name": "Newton",
-      "avatars": "https://i.imgur.com/73hZDYK.png"
-      ,
-      "handle": "@SirIsaac"
-    },
-    "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1461116232227
-  },
-  {
-    "user": {
-      "name": "Descartes",
-      "avatars": "https://i.imgur.com/nlhLi3I.png",
-      "handle": "@rd" },
-    "content": {
-      "text": "Je pense , donc je suis"
-    },
-    "created_at": 1461113959088
-  }
-];
-
-
-
-$(document).ready(()=> {
+$(document).ready(() => {
 
 
   // // Implement escape function to prevent XSS issues
@@ -34,7 +7,6 @@ $(document).ready(()=> {
     div.appendChild(document.createTextNode(str));
     return div.innerHTML;
   };
-  
 
   // Builds the tweet template and fills in the fields using the database
 
@@ -44,7 +16,7 @@ $(document).ready(()=> {
             <header>
               <div id="user-name">
                 <img src="${tweet.user.avatars}" alt="profile picture"/>
-                <p>${tweet.user.name}</p>
+                <p id="user">${tweet.user.name}</p>
               </div>
               
               <p id="user-handle">${tweet.user.handle}</p>
@@ -61,12 +33,11 @@ $(document).ready(()=> {
             </footer>
           </article>
   `;
-
     return $tweet;
   };
 
   // Renders tweet list, populating it by looping through the database
-  const renderTweets = function(tweets) {
+  const renderTweets = function (tweets) {
     const $allTweets = $(".all-tweets");
     $allTweets.empty();
     $.each(tweets, (post) => {
@@ -76,11 +47,10 @@ $(document).ready(()=> {
 
 
   //Setting Listeners for form submission
-  $(".submit-tweet").submit(function(event) {
+  $(".submit-tweet").submit(function (event) {
     event.preventDefault();
-    
-    let tweetInner = event.target[0].value;
 
+    let tweetInner = event.target[0].value;
     if (!tweetInner) {
       $(".error").text("Tweet empty, please share your thoughts!");
       $(".error").slideDown("slow").delay(2500).slideUp("slow");
@@ -93,12 +63,11 @@ $(document).ready(()=> {
       return;
     }
 
-
     $.ajax({
       method: "POST",
       url: "/tweets/",
       data: $(this).serialize(),
-    }).then(function() {
+    }).then(function () {
       loadTweets();
       document.querySelector(".submit-tweet").reset();
     });
@@ -107,12 +76,11 @@ $(document).ready(()=> {
 
   // Implement loadTweets function.
   // Use AJAX to fetch the tweets from the database
-
   const loadTweets = () => {
     $.ajax({
       method: "GET",
       url: "/tweets"
-    }).then(function(tweet) {
+    }).then(function (tweet) {
       renderTweets(tweet);
     });
   };
@@ -121,23 +89,24 @@ $(document).ready(()=> {
 
   // Implement onclick to show/hide the form when clicking the nav arrows
   $(".nav-arrows").on("click", function () {
-    $(".tweet-form").slideToggle("slow", function() {
+    $(".tweet-form").slideToggle("slow", function () {
     });
     $("tweet-form").focus();
   });
 
 
-  let homeBtn = document.getElementById("home-btn");
-  window.onscroll = function () {
-    if (document.body.scrollTop > 150 || document.documentElement.scrollTop > 150) {
-      homeBtn.style.display = "block";
+  // Implement button to navigate back to the top of the page.
+  let $homeBtn = $("#home-btn")[0];
+  $(window).scroll(function () {
+    if ($('body').scrollTop > 150 || document.documentElement.scrollTop > 150) {
+      $($homeBtn).css("display", "block");
     } else {
-      homeBtn.style.display = "none";
+      $($homeBtn).css("display", "none");
     }
-  };
-  
-  $('#home-btn').on('click', function () {
-    document.documentElement.scrollTop = 0;
   });
-  
+
+  $("#home-btn").on("click", function () {
+    $("html, body").animate({ scrollTop: 0 }, "slow");
+  });
+
 });

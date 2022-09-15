@@ -1,0 +1,76 @@
+@import '_variables';
+
+.all-tweets {
+
+  header {
+    color: $primary;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  footer {
+    border-top: solid $primary;
+    font-size: medium;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    
+    p {
+      font-size: small;
+    }
+  }
+
+  p {
+    font-weight: 600;
+    font-size: large;
+    
+  }
+
+  img {
+    width: 2em;
+  }
+
+}
+
+
+.new-tweet {
+  border: 2px solid $primary;
+  padding-left: 1em;
+  padding-right: 1em;
+  margin-top: 1em;
+  transition: box-shadow .2s
+}
+
+
+.footer-icons {
+  display: flex;
+  justify-content: space-around;
+  width: 80px;
+}
+
+
+#user-name {
+  font-size: large;
+  font-weight: normal;
+  display: flex;
+  align-items: center;
+}
+
+#user-handle {
+  font-size: large;
+  opacity: 0.4;
+  color: #002297;
+}
+
+.new-tweet:hover {
+  box-shadow: 10px 10px 13px 0px rgba(0,0,0,0.3);
+}
+
+.fa-flag:hover, .fa-heart:hover, .fa-retweet:hover {
+  color: #2b8ac9;
+}
+
+#user {
+  padding-left: 10px;
+}
